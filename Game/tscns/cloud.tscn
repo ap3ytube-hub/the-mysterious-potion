@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bhlj4dlvv34s5"]
+
+[ext_resource type="Texture2D" uid="uid://wic2ei8jginw" path="res://Game/img/big_cloud.png" id="2_dwk0i"]
+
+[sub_resource type="Animation" id="Animation_ygn4x"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_dwk0i"]
+resource_name = "move_cloud"
+length = 5.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iroxc"]
+_data = {
+&"RESET": SubResource("Animation_ygn4x"),
+&"move_cloud": SubResource("Animation_dwk0i")
+}
+
+[node name="cloud" type="Node2D" unique_id=216638451]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=730774784]
+libraries/ = SubResource("AnimationLibrary_iroxc")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="." unique_id=570393780]
+position = Vector2(2513.9998, 29)
+scale = Vector2(14.899367, 1.0077269)
+amount = 50
+texture = ExtResource("2_dwk0i")
+lifetime = 6.0
+speed_scale = 0.4
+randomness = 0.39
+use_fixed_seed = true
+seed = 699569333
+fixed_fps = 20
+draw_order = 1
+gravity = Vector2(-150, 0)
+scale_amount_min = 2.0
+scale_amount_max = 5.0

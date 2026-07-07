@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://h43ewcsdgit7"]
+
+[ext_resource type="Script" uid="uid://cbnfemjxdagov" path="res://Enemies/Zombie/zombie.gd" id="1_lmglm"]
+[ext_resource type="Texture2D" uid="uid://dbh8p81llvdh4" path="res://Misc/icon.svg" id="1_mawmx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 55.0
+height = 272.0
+
+[node name="Zombie" type="CharacterBody2D" unique_id=1749780895]
+script = ExtResource("1_lmglm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=965505637]
+rotation = -0.2617994
+scale = Vector2(1, 2.0800004)
+texture = ExtResource("1_mawmx")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1110463853]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=587054681]
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=452378580]
+
+[connection signal="body_entered" from="Area2D" to="." method="_zombie_collision_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="zombie_offscreen"]
