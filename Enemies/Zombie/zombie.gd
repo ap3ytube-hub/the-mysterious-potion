@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var move_timer := 1.0
 @export var step_size := 64.0
 
+var GamePlayer : Node2D = null
+
 const zombie_damage = 10
 
 func _ready() -> void:
@@ -17,10 +19,10 @@ func move_loop() -> void:
 func _zombie_collision_entered(body: Node2D) -> void:
 	if !body.is_in_group("player"):
 		return
-	Player.DamagePlayer(zombie_damage)
+	GamePlayer = body
 
 
 func zombie_offscreen() -> void:
 	print("zombie queue free")
-	Player.DamagePlayer(zombie_damage + 10)
+	GamePlayer.DamagePlayer(zombie_damage + 10)
 	queue_free()

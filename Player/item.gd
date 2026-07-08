@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player: Player = $".."
+@onready var player: MainPlayer = $".."
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 const HEALING_POTION_ADDITION : int = 15
